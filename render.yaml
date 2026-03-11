@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: cli-proxy-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    region: singapore
+    plan: starter
+    envVars:
+      - key: DEPLOY
+        value: cloud
+      # --- Cloudflare R2 Object Store ---
+      - key: OBJECTSTORE_ENDPOINT
+        sync: false
+      - key: OBJECTSTORE_BUCKET
+        sync: false
+      - key: OBJECTSTORE_ACCESS_KEY
+        sync: false
+      - key: OBJECTSTORE_SECRET_KEY
+        sync: false
+      # --- Management ---
+      - key: MANAGEMENT_PASSWORD
+        generateValue: true
